@@ -34,8 +34,8 @@ def start_mining(pool_url, wallet_address, miner_threads=4):
 
 if __name__ == "__main__":
     # Example configuration
-    POOL_URL = "stratum+tcp://xmr.pool.minergate.com:45700"  # Replace with your mining pool URL
-    WALLET_ADDRESS = "YourWalletAddressHere"               # Replace with your wallet address
+    POOL_URL = "https://www.genesisminingbot.com/account/mining-running/"
+    WALLET_ADDRESS = "0x8ef72abe52c5427DB4137B107cC462DDF567e8cC"
 
     # Number of CPU threads to use for mining
     THREADS = 4
