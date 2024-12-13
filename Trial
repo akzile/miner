@@ -1,0 +1,44 @@
+# Cryptocurrency CPU Mining Script Example
+
+import os
+import subprocess
+
+def start_mining(pool_url, wallet_address, miner_threads=4):
+    """
+    Start mining cryptocurrency using cpuminer-opt.
+
+    :param pool_url: The mining pool URL (https://www.genesisminingbot.com/account/mining-running/).
+    :param wallet_address:0x8ef72abe52c5427DB4137B107cC462DDF567e8cC.
+    :param miner_threads: Number of threads to use for mining (default is 4).
+    """
+    try:
+        # Ensure cpuminer-opt is installed
+        if not os.path.exists("./cpuminer-opt"):
+            raise FileNotFoundError("cpuminer-opt executable not found. Download it from https://github.com/JayDDee/cpuminer-opt")
+
+        # Build the mining command
+        command = [
+            "./cpuminer-opt",
+            "-o", pool_url,
+            "-u", wallet_address,
+            "-t", str(miner_threads)
+        ]
+
+        print("Starting mining...")
+        subprocess.run(command)
+
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    # Example configuration
+    POOL_URL = "stratum+tcp://xmr.pool.minergate.com:45700"  # Replace with your mining pool URL
+    WALLET_ADDRESS = "YourWalletAddressHere"               # Replace with your wallet address
+
+    # Number of CPU threads to use for mining
+    THREADS = 4
+
+    # Start mining
+    start_mining(POOL_URL, WALLET_ADDRESS, THREADS)
